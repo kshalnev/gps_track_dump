@@ -60,6 +60,15 @@ int main(int argc, const char * argv [])
 
   fseek(f, 0, SEEK_SET);
 
+  uint32_t version = 0;
+  read(f, &version);
+
+  if (version != 1)
+  {
+    cout << "Unsupported version" << endl;
+    return -1;
+  }
+
   for (size_t i = 0; i < itemCount; ++i)
   {
     double timestamp = 0;
